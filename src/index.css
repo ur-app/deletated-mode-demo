@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1020;
+  --panel: #12192f;
+  --panel-2: #0f1628;
+  --border: rgba(147, 168, 205, 0.18);
+  --text: #edf3ff;
+  --muted: #8ea1c9;
+  --accent: #8b5cf6;
+  --success: #16a34a;
+  --error: #dc2626;
+  --warning: #eab308;
+  --shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(
+      circle at top left,
+      rgba(139, 92, 246, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(59, 130, 246, 0.12),
+      transparent 22%
+    ),
+    linear-gradient(180deg, #0b1020 0%, #0a1021 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@layer components {
+  .app-shell {
+    @apply w-[min(1600px,calc(100vw-32px))] mx-auto py-6;
+  }
+
+  .layout-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 360px) minmax(520px, 1fr) minmax(300px, 360px);
+    gap: 18px;
+    min-height: calc(100vh - 160px);
+  }
+
+  .card {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 25, 47, 0.98),
+      rgba(13, 19, 35, 0.98)
+    );
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    @apply p-4;
+  }
+
+  .card-title {
+    @apply font-bold text-base mb-2;
+  }
+
+  .card-copy {
+    color: var(--muted);
+    @apply text-[0.95rem] leading-relaxed mb-4;
+  }
+
+  .field-group {
+    @apply flex flex-col gap-2 mb-3.5;
+  }
+
+  .field-group label {
+    @apply text-slate-300 text-sm;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl px-3.5 py-3 outline-none;
+    background: rgba(10, 15, 30, 0.92);
+    color: var(--text);
+    border: 1px solid rgba(147, 168, 205, 0.18);
+  }
+
+  .input-field:focus {
+    border-color: rgba(139, 92, 246, 0.72);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+  }
+
+  .ghost-btn {
+    border: 1px solid rgba(147, 168, 205, 0.18);
+    background: rgba(10, 15, 30, 0.92);
+    color: var(--text);
+    @apply rounded-xl px-3.5 py-3 transition-all duration-100;
+  }
+
+  .ghost-btn:hover:not(:disabled) {
+    border-color: rgba(139, 92, 246, 0.55);
+    transform: translateY(-1px);
+  }
+
+  .ghost-btn:disabled,
+  .action-btn:disabled,
+  .action-btn-primary:disabled {
+    @apply opacity-55 cursor-not-allowed;
+    transform: none !important;
+  }
+
+  .action-btn {
+    border: 1px solid rgba(147, 168, 205, 0.18);
+    background: rgba(10, 15, 30, 0.92);
+    color: var(--text);
+    @apply rounded-xl px-3.5 py-3 text-left font-semibold transition-all duration-100;
+  }
+
+  .action-btn:hover:not(:disabled) {
+    border-color: rgba(139, 92, 246, 0.55);
+    transform: translateY(-1px);
+  }
+
+  .action-btn-primary {
+    background: linear-gradient(
+      135deg,
+      rgba(109, 40, 217, 0.92),
+      rgba(139, 92, 246, 0.92)
+    );
+    border: 1px solid transparent;
+    color: var(--text);
+    @apply rounded-xl px-3.5 py-3 text-left font-semibold transition-all duration-100;
+  }
+
+  .action-btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .warning-box {
+    @apply rounded-xl px-3.5 py-3 text-sm leading-snug;
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.24);
+    color: #fde68a;
+  }
+
+  .console-card {
+    @apply min-h-full flex flex-col;
+  }
+
+  .console-step {
+    border: 1px solid rgba(147, 168, 205, 0.18);
+    border-radius: 16px;
+    background: rgba(8, 12, 24, 0.72);
+    @apply p-4;
+  }
+
+  .console-label {
+    @apply text-xs mb-1.5;
+    color: var(--muted);
+  }
+
+  .console-block {
+    background: rgba(4, 8, 17, 0.85);
+    border: 1px solid rgba(147, 168, 205, 0.16);
+    @apply rounded-xl p-3 text-slate-200 min-h-[90px] text-sm;
+  }
+
+  .status-section-title {
+    @apply text-xs uppercase tracking-widest mt-4 mb-2.5;
+    color: #b6c3dd;
+  }
+
+  .status-row {
+    @apply flex items-center justify-between gap-3 rounded-xl px-3 py-2.5;
+    background: rgba(6, 10, 20, 0.74);
+    border: 1px solid rgba(147, 168, 205, 0.12);
+    transition: background 200ms ease, border-color 200ms ease;
+  }
+
+  @media (max-width: 1280px) {
+    .layout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .app-shell {
+      @apply w-[min(100vw-20px,1600px)] pt-4;
+    }
+  }
+}
