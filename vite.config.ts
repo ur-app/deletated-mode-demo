@@ -2,6 +2,7 @@ import { defineConfig } from "vitest/config"
 import react from "@vitejs/plugin-react"
 
 export default defineConfig({
+  base: "/deletated-mode-demo/",
   plugins: [react()],
   server: {
     port: 3000,
