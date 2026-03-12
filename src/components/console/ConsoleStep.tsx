@@ -1,5 +1,6 @@
 import type { ApiStep } from "../../types"
 import { extractApiCode, isStepSuccess } from "../../lib/utils"
+import { getStepGuidance } from "../../lib/errors"
 
 interface ConsoleStepProps {
   step: ApiStep
@@ -13,6 +14,7 @@ export function ConsoleStep({ step, index }: ConsoleStepProps) {
   const statusLabel = `${step.responseStatus} ${
     successful ? "OK" : code !== undefined ? `API Error (${code})` : "Error"
   }`
+  const guidance = getStepGuidance(step)
 
   const baseUrlDisplay = step.url.includes("/v1/")
     ? step.url.split("/v1/")[0]
@@ -33,6 +35,16 @@ export function ConsoleStep({ step, index }: ConsoleStepProps) {
         >
           {statusLabel}
         </span>
+      </div>
+
+      <div
+        className={`rounded-xl px-3.5 py-3 text-sm mb-3 ${
+          successful
+            ? "bg-emerald-500/10 border border-emerald-400/20 text-emerald-100"
+            : "bg-red-500/10 border border-red-400/20 text-red-100"
+        }`}
+      >
+        {guidance}
       </div>
 
       <div className="grid grid-cols-2 gap-3">

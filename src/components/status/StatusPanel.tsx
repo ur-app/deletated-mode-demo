@@ -4,7 +4,7 @@ import { CardInfoSection } from "./CardInfoSection"
 
 export function StatusPanel() {
   return (
-    <aside className="flex flex-col gap-4">
+    <aside id="tour-status-panel" className="flex flex-col gap-4">
       <section className="card min-h-[280px]">
         <div className="card-title">User&apos;s UR Account Status</div>
         <ProfileSection />

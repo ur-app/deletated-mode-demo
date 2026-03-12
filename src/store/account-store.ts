@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import type { AccountState, StatusTone } from "../types"
+import type { AccountState, ActionOutcome, ActionType, StatusTone } from "../types"
 
 interface FlatState {
   [key: string]: string
@@ -55,11 +55,14 @@ interface AccountStoreState {
   statusText: string
   statusTone: StatusTone
   isBusy: boolean
+  lastAction: ActionType | null
+  actionOutcomes: Partial<Record<ActionType, ActionOutcome>>
 
   updateState: (next: AccountState) => void
   clearFlash: () => void
   setStatus: (text: string, tone: StatusTone) => void
   setBusy: (busy: boolean) => void
+  setActionOutcome: (action: ActionType, ok: boolean) => void
 }
 
 export const useAccountStore = create<AccountStoreState>((set, get) => ({
@@ -68,6 +71,8 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   statusText: "Ready",
   statusTone: "neutral" as StatusTone,
   isBusy: false,
+  lastAction: null,
+  actionOutcomes: {},
 
   updateState: (next) => {
     const prev = get().current
@@ -80,4 +85,16 @@ export const useAccountStore = create<AccountStoreState>((set, get) => ({
   setStatus: (text, tone) => set({ statusText: text, statusTone: tone }),
 
   setBusy: (busy) => set({ isBusy: busy }),
+
+  setActionOutcome: (action, ok) =>
+    set((state) => ({
+      lastAction: action,
+      actionOutcomes: {
+        ...state.actionOutcomes,
+        [action]: {
+          ok,
+          completedAt: Date.now(),
+        },
+      },
+    })),
 }))

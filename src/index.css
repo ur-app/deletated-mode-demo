@@ -91,6 +91,30 @@ pre {
     @apply text-[0.95rem] leading-relaxed mb-4;
   }
 
+  .step-kicker {
+    @apply uppercase text-[11px] tracking-[0.24em] text-violet-300 mb-1;
+  }
+
+  .step-badge {
+    @apply shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold border;
+  }
+
+  .step-badge-pending {
+    @apply text-amber-200 border-amber-400/25 bg-amber-400/10;
+  }
+
+  .step-badge-ready {
+    @apply text-sky-200 border-sky-400/25 bg-sky-400/10;
+  }
+
+  .step-badge-success {
+    @apply text-emerald-200 border-emerald-400/25 bg-emerald-500/10;
+  }
+
+  .card-section-label {
+    @apply text-xs uppercase tracking-[0.2em] text-slate-400 mb-3;
+  }
+
   .field-group {
     @apply flex flex-col gap-2 mb-3.5;
   }
@@ -109,6 +133,15 @@ pre {
   .input-field:focus {
     border-color: rgba(139, 92, 246, 0.72);
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.18);
+  }
+
+  .input-field-error {
+    border-color: rgba(220, 38, 38, 0.75);
+    box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.1);
+  }
+
+  .field-error {
+    @apply text-red-300 text-xs mt-1;
   }
 
   .ghost-btn {
@@ -164,6 +197,36 @@ pre {
     color: #fde68a;
   }
 
+  .flow-card {
+    border: 1px solid rgba(147, 168, 205, 0.18);
+    background: rgba(8, 12, 24, 0.5);
+    @apply rounded-2xl p-4;
+  }
+
+  .flow-summary {
+    @apply rounded-xl px-3 py-2.5 text-sm flex flex-col gap-1;
+    background: rgba(2, 6, 23, 0.7);
+    border: 1px solid rgba(147, 168, 205, 0.14);
+  }
+
+  .flow-summary-label {
+    @apply text-[11px] uppercase tracking-[0.18em] text-slate-400;
+  }
+
+  .flow-overview-item {
+    @apply flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm;
+    background: rgba(8, 12, 24, 0.56);
+    border: 1px solid rgba(147, 168, 205, 0.12);
+  }
+
+  .flow-overview-dot {
+    @apply block w-2.5 h-2.5 rounded-full bg-slate-500;
+  }
+
+  .flow-overview-dot-done {
+    @apply bg-emerald-400;
+  }
+
   .console-card {
     @apply min-h-full flex flex-col;
   }
@@ -207,6 +270,12 @@ pre {
   @media (max-width: 720px) {
     .app-shell {
       @apply w-[min(100vw-20px,1600px)] pt-4;
+    }
+
+    .flow-card .grid.grid-cols-2,
+    .grid.grid-cols-3,
+    .grid.grid-cols-2 {
+      grid-template-columns: 1fr;
     }
   }
 }

@@ -1,6 +1,6 @@
-// 默认的base url，用于在sandbox中显示
+// Default base URL shown in the sandbox UI
 export const DEFAULT_BASE_URL = "https://uropenapi.s7.gomantle.org";
-// 因为前端调用有cors issues，这里用cloudflare做了一下简单代理，实际调用的是这个url
+// Requests are proxied through Cloudflare to avoid CORS issues in the browser
 export const PROXY_BASE_URL = "https://sandbox-api-proxy.potter.workers.dev";
 
 export const STATUS_LABELS: Record<number, string> = {

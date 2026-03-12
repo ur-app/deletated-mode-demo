@@ -29,10 +29,19 @@ export function Header() {
           actions and inspect the API calls and resulting account state.
         </p>
       </div>
-      <div
-        className={`shrink-0 border rounded-full px-3.5 py-2.5 font-semibold text-sm ${toneClasses[statusTone] ?? toneClasses.neutral}`}
-      >
-        {statusText}
+      <div className="shrink-0 flex items-center gap-2.5">
+        <button
+          type="button"
+          className="ghost-btn !px-3 !py-2 text-sm"
+          onClick={() => window.dispatchEvent(new Event("ur-demo:start-tour"))}
+        >
+          Start tour
+        </button>
+        <div
+          className={`border rounded-full px-3.5 py-2.5 font-semibold text-sm ${toneClasses[statusTone] ?? toneClasses.neutral}`}
+        >
+          {statusText}
+        </div>
       </div>
     </header>
   )

@@ -70,6 +70,21 @@ export interface ActionResult {
 
 export type StatusTone = "neutral" | "busy" | "success" | "error"
 
+export interface ActionOutcome {
+  ok: boolean
+  completedAt: number
+}
+
+export interface ConfigFieldErrors {
+  partnerPrivateKey?: string
+  urId?: string
+  userAddress?: string
+  chainId?: string
+  offrampAmount?: string
+  onrampAmount?: string
+  fxAmount?: string
+}
+
 export type ActionType =
   | "refreshState"
   | "offrampQuote"
