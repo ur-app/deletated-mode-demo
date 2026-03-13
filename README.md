@@ -75,7 +75,7 @@ npm run preview
 
 ### How to Use
 
-1. Open `http://localhost:3000` in your browser.
+1. Open `http://localhost:3000/deletated-mode-demo/` in your browser.
 2. Paste the demo Partner Private Key from the quick start guide.
 3. Enter the user URID and user address (or keep the defaults).
 4. Select a target chain (Mantle Sepolia / Arbitrum Sepolia / Mantle Mainnet).
